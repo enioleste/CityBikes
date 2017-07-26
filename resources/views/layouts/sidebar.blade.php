@@ -25,19 +25,9 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">                   
-           <li class="treeview tour-sidebar">
-                <a href="{{ url('admin/cadastro-paciente') }}">                    
-                    <span>Cadastrar Paciente</span>
-                    <span class="pull-right-container">
-                    </span>
-                </a>        
+           <li class="treeview tour-sidebar">      
             </li> 
-           <li class="treeview tour-sidebar">
-                <a href="{{ url('ficha-anamnese') }}">                    
-                    <span>Ficha Anamnese</span>
-                    <span class="pull-right-container">
-                    </span>
-                </a>        
+           <li class="treeview tour-sidebar">       
             </li>                  <!-- /.sidebar-menu -->
         </ul>
     </section><!-- /.sidebar -->

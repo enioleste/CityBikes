@@ -3,7 +3,7 @@
 
     <!-- Logo -->
     <a href="{{ url('/') }}" class="logo">
-        <label>Life Odontologia</label>
+        <label>City Bikes</label>
     </a>
 
     <!-- Header Navbar -->

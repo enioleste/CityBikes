@@ -22,8 +22,3 @@ Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerif
 
 Route::get('admin/home', 'HomeController@index');
 //Route::get('/testeTemplate', 'HomeController@testeLayout');
-
-//PACIENTE ROUTES
-Route::get('admin/cadastro-paciente', 'HomeController@cadastroPaciente');
-Route::post('admin/insere-paciente', 'AdminController@inserePaciente');
-Route::get('admin/ficha-anamnese', 'HomeController@fichaAnamnese');

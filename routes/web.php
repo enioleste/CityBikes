@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
 Auth::routes();
 
@@ -21,4 +18,6 @@ Route::get('email-verification/error', 'Auth\RegisterController@getVerificationE
 Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerification')->name('email-verification.check');
 
 Route::get('admin/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 //Route::get('/testeTemplate', 'HomeController@testeLayout');

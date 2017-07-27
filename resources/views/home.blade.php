@@ -6,13 +6,14 @@
 
 <link rel="stylesheet" href={{ asset('/assets/plugins/leaflet/leaflet.css') }} />
 <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
-
+<link rel="stylesheet" href="{{ asset('/assets/plugins/datatables/dataTables.bootstrap.css') }}">
 @endsection
 
 @section('pageScripts')
 
 <script src={{ asset('/assets/plugins/leaflet/leaflet.js') }}></script>
 <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+<script src="{{ asset('/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script>
     var mymap = L.map('idmapa').setView([-22.91, -43.20], 3);
 
@@ -25,9 +26,39 @@
         accessToken: 'pk.eyJ1IjoiZW5pb2xlc3RlIiwiYSI6ImNqNWtic3hwYjJocnUycW82ZTRlNXV1NzcifQ.FdYz6dhK43QVPDEcM0rdWQ'
     }).addTo(mymap);
 
-    var marker = L.marker([-22.91, -43.20]).addTo(mymap);
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+@foreach ($posicoes as $value)
+    var marker = L.marker([{{ $value->latitude }}, {{ $value->longitude }}]).bindPopup("Local: {{ $value->cidade }}").addTo(mymap);
+@endforeach
 
+</script>
+<script>
+    $(function () {
+        $("#lista-posicoes").DataTable({
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+            }
+        });
+    });
 </script>
 @endsection
 
@@ -52,37 +83,37 @@
               <h3 class="box-title">Listagem</h3>             
             </div>
         <div class="box-body">
-                <table id="lista-corretores" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>Local</th>
-                    <th>Cidade</th>
-                    <th>Cadastrado por</th>
-                    <th>Quantidade Disponível</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="table-responsive">        
+                <table id="lista-posicoes" class="table table-bordered table-striped table-responsive">
+                    <thead>
                     <tr>
-                        <td>
-                            000
-                        </td>
-                        <td>
-                            CORRETOR CADASTRADO 0
-                        </td>
-                        <td>
-                            <a href="#">André Dantas</a>
-                        </td>
-                        <td>
-                            <a href="#" title="Editar"><i class="fa fa-edit"></i></a> | 
-                            <a href="#" title="Excluir"><i class="fa fa-trash-o"></i></a>
-                        </td>
+                        <th>Local</th>
+                        <th>Cidade</th>
+                        <th>Estabelecimento</th>
+                        <th>Quantidade Disponível</th>
                     </tr>
-                </tfoot>
+                    </thead>
+                    <tbody>
+                        @foreach($posicoes as $key => $value)
+                            <tr class="fit">
+                                <td class="fit">
+                                    {{ $value->pais }}
+                                </td>
+                                <td class="fit">
+                                    {{ $value->cidade }}
+                                </td>
+                                <td class="fit">
+                                    {{ $value->nome_estabelecimento }}
+                                </td>
+                                <td class="fit">
+                                    {{ $value->quant }}
+                                </td>
+                            </tr>
+                        @endforeach 
+                    </tbody>       
                 </table>
             </div>
             <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
          </div>            
         </div>
     </div>

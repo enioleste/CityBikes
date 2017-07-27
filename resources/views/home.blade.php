@@ -51,7 +51,39 @@
             <div class="box-header with-border">
               <h3 class="box-title">Listagem</h3>             
             </div>
-            
+        <div class="box-body">
+                <table id="lista-corretores" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Local</th>
+                    <th>Cidade</th>
+                    <th>Cadastrado por</th>
+                    <th>Quantidade Disponível</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            000
+                        </td>
+                        <td>
+                            CORRETOR CADASTRADO 0
+                        </td>
+                        <td>
+                            <a href="#">André Dantas</a>
+                        </td>
+                        <td>
+                            <a href="#" title="Editar"><i class="fa fa-edit"></i></a> | 
+                            <a href="#" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+         </div>            
         </div>
     </div>
 </div>           

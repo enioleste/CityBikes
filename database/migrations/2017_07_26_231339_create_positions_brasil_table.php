@@ -20,6 +20,7 @@ class CreatePositionsBrasilTable extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->string('nome_estabelecimento'); //company
+            $table->string('quant'); //quantidade
 
         });
     }
